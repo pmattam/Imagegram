@@ -5,7 +5,6 @@ header {
     width: 100%;
     border-bottom: 1px ridge darkgray;
     border-width: 100%;
-    
 }
 h1 {
     margin: 0;
@@ -37,7 +36,6 @@ img {
     height: 300px;
     padding: 10px 10px 10px 10px;
 }
-
 .container > img:hover {
     filter: opacity(0.8);
 }
@@ -52,24 +50,50 @@ img {
     display: none;
 }
 .lightbox.active{
-    display:flex;
+    display: flex;
     justify-content: center;
     align-items: center;
 }
+.lb-img {
+    display: flex;
+    padding: 30px;
+}
 .close {
     display: flex;
-    align-items: flex-start;
-    height: 10px;
-    width: 10px;
-    display: none;
+    height: 20px;
+    width: 20px;
+    display: none; 
 }
 .close.active {
     display: flex;
-    align-self: center;
+    height: 20px;
+    width: 20px; 
+    padding-bottom: 400px;
+}
+.close-img {
+    background-color: rgba(5,5,5,0);
+    height: 10px;
+    width: 10px;
+    padding: 0;    
+}
+.larrow, .rarrow {
+    display: flex;
+    height: 20px;
+    width: 20px;
+    display: none; 
+}
+.larrow {
+    padding-left: 60px;
+}
+.rarrow {
+    padding-right: 60px;
+}
+.larrow.active, .rarrow.active {
+    display: flex;
     height: 20px;
     width: 20px; 
 }
-.close-img {
+.larrow-img, .rarrow-img{
     background-color: rgba(5,5,5,0);
     height: 10px;
     width: 10px;
