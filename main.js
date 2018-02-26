@@ -4,6 +4,7 @@ var lightBoxImg = document.querySelector(".lb-img  img");
 var close = document.querySelector(".close");
 var larrow = document.querySelector(".larrow");
 var rarrow = document.querySelector(".rarrow");
+// array of images
 var imgArray = [
     {
         link: "images/img1.jpeg"
