@@ -44,7 +44,7 @@ img {
     position: fixed;
     top:50%;
     left:50%;
-    transform: translate(-50%, -50%) scaleX(3) scaleY(2);
+    transform: translate(-48.2%, -48%) scaleX(3) scaleY(2);
     width: 100vw;
     height: 100vh;
     display: none;
@@ -68,7 +68,7 @@ img {
     display: flex;
     height: 20px;
     width: 20px; 
-    padding-bottom: 400px;
+    padding-bottom: 420px;
 }
 .close-img {
     background-color: rgba(5,5,5,0);
@@ -80,18 +80,12 @@ img {
     display: flex;
     height: 20px;
     width: 20px;
-    display: none; 
 }
 .larrow {
     padding-left: 60px;
 }
 .rarrow {
     padding-right: 60px;
-}
-.larrow.active, .rarrow.active {
-    display: flex;
-    height: 20px;
-    width: 20px; 
 }
 .larrow-img, .rarrow-img{
     background-color: rgba(5,5,5,0);

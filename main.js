@@ -1,9 +1,11 @@
-var container = document.querySelector('.container');
-var lightBox = document.querySelector(".lightbox");
-var lightBoxImg = document.querySelector(".lb-img  img");
-var close = document.querySelector(".close");
-var larrow = document.querySelector(".larrow");
-var rarrow = document.querySelector(".rarrow");
+var $container = $('.container');
+var $lightBox = $('.lightbox');
+var $lightBoxImg = $('.lb-img img');
+var $close = $('.close');
+var $larrowImg = $('.larrow-img');
+$larrowImg.fadeOut('fast');
+var $rarrowImg = $('.rarrow-img');
+$rarrowImg.fadeOut('fast');
 var imgArray = [
     {
         link: "images/img1.jpeg"
@@ -52,23 +54,21 @@ var imgArray = [
     }    
 ];
 
-// forEach with a function expression!
 imgArray.forEach(function(image) {
-    var imageTag = document.createElement('img');
-    imageTag.src = image.link;
-    container.appendChild(imageTag);
-    // imageTag.classList.add('img_class');
-    imageTag.addEventListener('click', function() {
-        lightBoxImg.src = image.link;
-        selectedImg = image.link; 
-        lightBox.classList.add("active");
-        close.classList.add("active");
+    var $imageTag = $('<img>', {'src': image.link});
+    $container.append($imageTag);
+        $imageTag.on('click', function() {
+            $lightBoxImg.attr('src', image.link);
+            selectedImg = image.link;
+            $lightBox.addClass('active');
+            $close.addClass('active');
+            
         var currentImgNumber = selectedImg.substring(selectedImg.lastIndexOf("img")+3, selectedImg.lastIndexOf(".jpeg"));
         if(parseInt(currentImgNumber) > 1) {
-            larrow.classList.add("active");
+            $larrowImg.fadeIn('fast');
         }
         if(parseInt(currentImgNumber) < 15) {
-            rarrow.classList.add("active");
+            $rarrowImg.fadeIn('fast');
         }    
     })
 });
@@ -77,17 +77,18 @@ var leftArrowFn = function() {
     var currentImgNumber = selectedImg.substring(selectedImg.lastIndexOf("img")+3, selectedImg.lastIndexOf(".jpeg"));
     if(parseInt(currentImgNumber) > 1) {
         var prevImgSrc = "images/img" + (parseInt(currentImgNumber)-1) + ".jpeg"; 
-        lightBoxImg.setAttribute("src", prevImgSrc);
+        $lightBoxImg.attr('src', prevImgSrc);
         selectedImg = prevImgSrc;
         if(parseInt(currentImgNumber) === 2){
-            larrow.classList.remove("active");
+            $larrowImg.fadeOut('fast');
         }
-        if(parseInt(currentImgNumber) === 15){
-            rarrow.classList.add("active");
+        if(parseInt(currentImgNumber) === 15){  
+            $rarrowImg.fadeIn('fast');                  
         }
     }
     else {
-        larrow.classList.remove("active");
+        $larrowImg.fadeOut('fast');
+
     }
 };
 
@@ -95,30 +96,30 @@ var rightArrowFn = function() {
     var currentImgNumber = selectedImg.substring(selectedImg.lastIndexOf("img")+3, selectedImg.lastIndexOf(".jpeg"));
     if(parseInt(currentImgNumber) < 15) {
         var nextImgSrc = "images/img" + (parseInt(currentImgNumber)+1) + ".jpeg"; 
-        lightBoxImg.setAttribute("src", nextImgSrc);
+        $lightBoxImg.attr('src', nextImgSrc);
         selectedImg = nextImgSrc;
         if(parseInt(currentImgNumber) === 14) {
-            rarrow.classList.remove("active");
+            $rarrowImg.fadeOut('fast');
         } 
         if(parseInt(currentImgNumber) === 1) {
-            larrow.classList.add("active");
+            $larrowImg.fadeIn('fast');
         } 
     }
     else {
-        rarrow.classList.remove("active");
+        $rarrowImg.fadeOut('fast');
     }
     if(parseInt(currentImgNumber) >= 2){
-        larrow.classList.add("active");
+        $larrowImg.fadeIn('fast');
     }
 };
 
 var closeFn = function () {
-    lightBox.classList.remove("active");
-    close.classList.remove("active");    
+    $lightBox.removeClass('active');
+    $close.removeClass('active'); 
 };
 
-document.querySelector(".larrow-img").addEventListener("click", leftArrowFn);
-document.querySelector(".rarrow-img").addEventListener("click", rightArrowFn);
-document.querySelector(".close-img").addEventListener("click", closeFn);
+$larrowImg.on('click', leftArrowFn);
+$rarrowImg.on('click', rightArrowFn);
+$('.close-img').on('click', closeFn);
 
 
