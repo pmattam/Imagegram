@@ -2,10 +2,8 @@ var $container = $('.container');
 var $lightBox = $('.lightbox');
 var $lightBoxImg = $('.lb-img img');
 var $close = $('.close');
-// var $larrow = $('.larrow');
 var $larrowImg = $('.larrow-img');
 $larrowImg.fadeOut('fast');
-// var $rarrow = $('.rarrow');
 var $rarrowImg = $('.rarrow-img');
 $rarrowImg.fadeOut('fast');
 var imgArray = [
@@ -67,15 +65,9 @@ imgArray.forEach(function(image) {
             
         var currentImgNumber = selectedImg.substring(selectedImg.lastIndexOf("img")+3, selectedImg.lastIndexOf(".jpeg"));
         if(parseInt(currentImgNumber) > 1) {
-            // $larrow.addClass('active');
-            // $larrow.fadeIn('fast');
-            // $('.larrow-img').fadeIn('fast');
             $larrowImg.fadeIn('fast');
         }
         if(parseInt(currentImgNumber) < 15) {
-            // $rarrow.addClass('active');
-            // $rarrow.fadeIn('fast');
-            // $('.rarrow-img').fadeIn('fast');
             $rarrowImg.fadeIn('fast');
         }    
     })
@@ -88,22 +80,13 @@ var leftArrowFn = function() {
         $lightBoxImg.attr('src', prevImgSrc);
         selectedImg = prevImgSrc;
         if(parseInt(currentImgNumber) === 2){
-            // $larrow.removeClass('active');
-            // $larrow.fadeOut('fast');
-            // $('.larrow-img').fadeOut('fast');
             $larrowImg.fadeOut('fast');
         }
-        if(parseInt(currentImgNumber) === 15){
-            // $rarrow.addClass('active');
-            // $rarrow.fadeIn('fast');   
-            // $('.rarrow-img').fadeIn('fast');      
+        if(parseInt(currentImgNumber) === 15){  
             $rarrowImg.fadeIn('fast');                  
         }
     }
     else {
-        // $larrow.removeClass('active');
-        // $larrow.fadeOut('fast');
-        // $('.larrow-img').fadeOut('fast');
         $larrowImg.fadeOut('fast');
 
     }
@@ -116,28 +99,16 @@ var rightArrowFn = function() {
         $lightBoxImg.attr('src', nextImgSrc);
         selectedImg = nextImgSrc;
         if(parseInt(currentImgNumber) === 14) {
-            // $rarrow.removeClass('active');
-            // $rarrow.fadeOut('fast');
-            // $('.rarrow-img').fadeOut('fast');
             $rarrowImg.fadeOut('fast');
         } 
         if(parseInt(currentImgNumber) === 1) {
-            // $larrow.addClass('active');
-            // $larrow.fadeIn('fast');
-            // $('.larrow-img').fadeIn('fast');
             $larrowImg.fadeIn('fast');
         } 
     }
     else {
-        // $rarrow.removeClass('active');
-        // $rarrow.fadeOut('fast');
-        // $('.rarrow-img').fadeOut('fast');
         $rarrowImg.fadeOut('fast');
     }
     if(parseInt(currentImgNumber) >= 2){
-        // $larrow.addClass('active');
-        // $larrow.fadeIn('fast');
-        // $('.larrow-img').fadeIn('fast');
         $larrowImg.fadeIn('fast');
     }
 };
@@ -147,8 +118,6 @@ var closeFn = function () {
     $close.removeClass('active'); 
 };
 
-// $('.larrow-img').on('click', leftArrowFn);
-// $('.rarrow-img').on('click', rightArrowFn);
 $larrowImg.on('click', leftArrowFn);
 $rarrowImg.on('click', rightArrowFn);
 $('.close-img').on('click', closeFn);
